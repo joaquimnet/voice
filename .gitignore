@@ -1,0 +1,9 @@
+node_modules
+*.ogg
+ecosystem.config.js
+*.log
+*/config/*.json
+.env
+audio-output
+app.yaml
+tts.json

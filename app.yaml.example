@@ -1,0 +1,4 @@
+runtime: nodejs10
+env_variables:
+  TOKEN: 'discord token here'
+  GOOGLE_CREDENTIALS: 'google credentials here'
