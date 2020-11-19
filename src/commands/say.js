@@ -12,9 +12,10 @@ module.exports = new Command({
     if (message.channel.type !== 'text') return;
 
     // Get author's voice channel
-    const voiceChannel = message.guild.channels.cache.get(
-      message.guild.voiceStates.cache.get(message.member.id)?.channelID,
-    );
+    const voiceState = message.guild.voiceStates.cache.get(message.member.id);
+    const voiceChannel = voiceState
+      ? message.guild.channels.cache.get(voiceState.channelID)
+      : undefined;
 
     // Check if it exists
     if (!voiceChannel) {

@@ -61,7 +61,7 @@ const config = {
       name: 'Manage Messages',
       check: (message) => {
         try {
-          return message.guild?.member(message.author)?.hasPermission('MANAGE_MESSAGES');
+          return message.guild.member(message.author).hasPermission('MANAGE_MESSAGES');
         } catch (ex) {
           return false;
         }
@@ -73,7 +73,7 @@ const config = {
       name: 'Manage Roles',
       check: (message) => {
         try {
-          return message.guild?.member(message.author)?.hasPermission('MANAGE_ROLES');
+          return message.guild.member(message.author).hasPermission('MANAGE_ROLES');
         } catch (ex) {
           return false;
         }
@@ -85,7 +85,7 @@ const config = {
       name: 'Manage Guild',
       check: (message) => {
         try {
-          return message.guild?.member(message.author)?.hasPermission('MANAGE_GUILD');
+          return message.guild.member(message.author).hasPermission('MANAGE_GUILD');
         } catch (ex) {
           return false;
         }
@@ -100,7 +100,7 @@ const config = {
       // Otherwise it will return false.
       check: (message) =>
         message.channel.type === 'text'
-          ? message.guild?.ownerID === message.author.id
+          ? message.guild.ownerID === message.author.id
             ? true
             : false
           : false,

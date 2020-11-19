@@ -10,9 +10,10 @@ module.exports = new Command({
     const conns = message.client.voice.connections;
     const user = message.member;
 
-    const userChannel = message.guild.channels.cache.get(
-      user.guild.voiceStates.cache.get(user.id)?.channelID,
-    );
+    const voiceState = message.guild.voiceStates.cache.get(message.member.id);
+    const userChannel = voiceState
+      ? message.guild.channels.cache.get(voiceState.channelID)
+      : undefined;
     const botChannel = conns.get(gId);
 
     const hasArg = args[0] ? true : false;
