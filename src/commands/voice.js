@@ -8,7 +8,6 @@ module.exports = new Command({
   run(bot, message, { args }) {
     const gId = message.channel.guild.id;
     const conns = message.client.voice.connections;
-    const user = message.member;
 
     const voiceState = message.guild.voiceStates.cache.get(message.member.id);
     const userChannel = voiceState

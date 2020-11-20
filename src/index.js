@@ -1,13 +1,12 @@
 require('dotenv').config();
 require('./config/google');
+
 const log = require('./config/log');
-const Discord = require('./Discord');
-const Web = require('./Web');
+const Bot = require('./services/discord/bot');
+const Web = require('./services/web');
 const events = require('./events');
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/popon';
-
-Discord();
+Bot();
 Web();
 
 events.on('kill', () => {

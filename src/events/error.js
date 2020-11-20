@@ -1,3 +1,1 @@
-const log = require('../config/log');
-
-module.exports = (bot, err) => log.error('[Discord] Oh no! An error ocurred.', err);
+module.exports = (bot, err) => bot.logger.error('[Discord] Oh no! An error ocurred.', err);

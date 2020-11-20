@@ -1,11 +1,8 @@
 module.exports = () => {
-  // Loglevel
-  const log = require('./config/log');
+  const log = require('../../config/log');
 
-  // Events
-  const events = require('./events');
+  const events = require('../../events');
 
-  // Express
   const express = require('express');
   const bodyParser = require('body-parser');
   const cors = require('cors');
