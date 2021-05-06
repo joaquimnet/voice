@@ -1,4 +1,4 @@
-const Client = require('@ponatech/bot').BotClient;
+const { BotClient: Client, defaultCommands } = require('sensum');
 
 const log = require('../../config/log');
 const botConfig = require('../../config/config');
@@ -6,6 +6,7 @@ const events = require('../../events');
 
 module.exports = () => {
   const client = new Client(botConfig);
+  defaultCommands.forEach((cmd) => client.loadCommand(cmd));
 
   client.logger = log;
 
