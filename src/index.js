@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('tinv')();
 require('./config/google');
 
 const log = require('./config/log');
@@ -16,3 +16,5 @@ events.on('kill', () => {
 
 process.on('SIGTERM', () => events.emit('kill'));
 process.on('SIGINT', () => events.emit('kill'));
+
+// you have no reason to let the in between stop you

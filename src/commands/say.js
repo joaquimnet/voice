@@ -1,4 +1,4 @@
-const { Command } = require('@ponatech/bot');
+const { Command } = require('sensum');
 
 const speech = require('../services/discord/speech');
 const dispatchers = require('../services/discord/dispatchers');

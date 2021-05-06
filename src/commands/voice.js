@@ -1,4 +1,4 @@
-const { Command } = require('@ponatech/bot');
+const { Command } = require('sensum');
 
 module.exports = new Command({
   name: 'voice',
