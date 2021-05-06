@@ -1,0 +1,11 @@
+---
+application:
+  name: "voice"
+  project: "voice"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-voice"
+  routes:
+  - application_name: "voice"
+    paths:
+    - "/*"
