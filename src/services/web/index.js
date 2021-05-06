@@ -10,7 +10,7 @@ module.exports = () => {
   const app = express();
 
   app.get('*', (req, res) => {
-    res.send('Voice!');
+    res.json({ bot: 'Voice', version: require('../../../package.json').version, time: new Date() });
   });
 
   const server = app.listen(port, () => {
