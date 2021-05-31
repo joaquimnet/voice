@@ -23,7 +23,8 @@
     "loglevel-plugin-prefix": "^0.8.4",
     "moment": "^2.24.0",
     "sensum": "^0.4.5",
-    "tinv": "^1.0.1"
+    "tinv": "^1.0.1",
+    "ulid": "^2.3.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"

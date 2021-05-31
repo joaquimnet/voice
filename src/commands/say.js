@@ -8,6 +8,7 @@ const dispatchers = require('../services/discord/dispatchers');
 module.exports = new Command({
   name: '.',
   description: 'Say what you type in the connected voice channel.',
+  delete: true,
   run(bot, message, { content }) {
     if (message.channel.type !== 'text') return;
 

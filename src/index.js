@@ -6,6 +6,8 @@ const Bot = require('./services/discord/bot');
 const Web = require('./services/web');
 const events = require('./events');
 
+// TODO: queue speech
+
 Bot();
 Web();
 
