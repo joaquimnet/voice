@@ -22,7 +22,7 @@
     "loglevel": "^1.6.3",
     "loglevel-plugin-prefix": "^0.8.4",
     "moment": "^2.24.0",
-    "sensum": "^0.4.5",
+    "sensum": "^0.5.0",
     "tinv": "^1.0.1",
     "ulid": "^2.3.0"
   },
