@@ -9,6 +9,7 @@ module.exports = new Command({
   name: '.',
   description: 'Say what you type in the connected voice channel.',
   delete: true,
+  cooldown: 0,
   run(bot, message, { content }) {
     if (message.channel.type !== 'text') return;
 
