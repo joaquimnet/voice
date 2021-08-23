@@ -1,9 +1,12 @@
+const crypto = require('crypto');
 const { Command } = require('sensum');
 
 const speech = require('../services/discord/speech');
 const dispatchers = require('../services/discord/dispatchers');
 
 // TODO: Save in the database the amount of characters the guilds tts and limit it
+
+const queue = {};
 
 module.exports = new Command({
   name: '.',
@@ -31,18 +34,35 @@ module.exports = new Command({
       return message.channel.send('I am not connected to any voice channel. Use >>voice join');
     }
 
-    if (content.length >= 300) {
-      return message.channel.send('Whoa there. Try not to send more than 300 characters at once.');
+    if (content.length >= 2048) {
+      return message.channel.send('Whoa there. Try not to send more than 2048 characters at once.');
     }
 
-    speech(content).then((stream) =>
-      dispatchers.add(
-        voiceConnection.play(stream, {
-          seek: 0,
-          volume: 1,
-          bitrate: 96000,
-        }),
-      ),
-    );
+    const addStreamToDispatchers = (stream) => {
+      const dispatch = voiceConnection.play(stream, {
+        seek: 0,
+        volume: 1,
+        bitrate: 96000,
+      });
+      dispatchers.add(dispatch);
+      if (Object.values(queue).length) {
+        dispatch.addListener('finish', () => {
+          const [k, val] = Object.entries(queue);
+          delete queue[k];
+          speech(val).then(addStreamToDispatchers);
+        });
+      }
+    };
+
+    if (Object.values(queue).length) {
+      queue[hash(content)] = content;
+      return;
+    }
+
+    speech(content).then(addStreamToDispatchers);
   },
 });
+
+function hash(content) {
+  return crypto.createHash('md5').update(content).digest('hex').toString('hex');
+}
